@@ -10,7 +10,11 @@ import { TypeOrmModule } from '@nestjs/typeorm'
         type: 'postgres',
         host: 'localhost',
         port: 5432,
-        username:
+        username: 'admin',
+        password: 'admin123',
+        database: 'simulacroNestJs',
+        entities: [],
+        synchronize: true
         }),
         CotizacionesModule],
     controllers: [AppController],
