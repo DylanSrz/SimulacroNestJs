@@ -6,17 +6,19 @@ import { TypeOrmModule } from '@nestjs/typeorm'
 
 @Module({
     imports: [
-        TypeOrmModule.forRoot({
-        type: 'postgres',
-        host: 'localhost',
-        port: 5432,
-        username: 'admin',
-        password: 'admin123',
-        database: 'simulacroNestJs',
-        entities: [],
-        synchronize: true
+        TypeOrmModule.forRootAsync({
+            useFactory: () => ({
+                type: 'postgres',
+                host: 'localhost',
+                port: 5432,
+                username: 'admin',
+                password: 'admin123',
+                database: 'simulacroNestJs',
+                autoLoadEntities: true
+            })
         }),
-        CotizacionesModule],
+        CotizacionesModule
+    ],
     controllers: [AppController],
     providers: [AppService],
 })
