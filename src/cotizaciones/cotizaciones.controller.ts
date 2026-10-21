@@ -1,9 +1,11 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
 import { CotizacionesService } from './cotizaciones.service.js';
 import { CreateCotizacioneDto } from './dto/create-cotizacione.dto.js';
 import { UpdateCotizacioneDto } from './dto/update-cotizacione.dto.js';
+import { AuthGuard } from '../auth/guards/auth.guards.js';
 
 @Controller('cotizaciones')
+@UseGuards(AuthGuard)
 export class CotizacionesController {
   constructor(private readonly cotizacionesService: CotizacionesService) {}
 
