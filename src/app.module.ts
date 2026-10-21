@@ -14,7 +14,7 @@ import { TypeOrmModule } from '@nestjs/typeorm'
                 username: 'admin',
                 password: 'admin123',
                 database: 'simulacroNestJs',
-                autoLoadEntities: true
+                autoLoadEntities: true,
             })
         }),
         CotizacionesModule
