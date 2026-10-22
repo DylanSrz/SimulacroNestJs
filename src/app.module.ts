@@ -3,19 +3,21 @@ import { AppController } from './app.controller.js';
 import { AppService } from './app.service.js';
 import { CotizacionesModule } from './cotizaciones/cotizaciones.module.js';
 import { TypeOrmModule } from '@nestjs/typeorm'
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import appConfig from './config/app.config.js';
 
 @Module({
     imports: [
+        ConfigModule.forRoot({
+            load: [appConfig]
+        }),
         TypeOrmModule.forRootAsync({
-            useFactory: () => ({
-                type: 'postgres',
-                host: 'localhost',
-                port: 5432,
-                username: 'admin',
-                password: 'admin123',
-                database: 'simulacroNestJs',
-                autoLoadEntities: true,
+            imports: [ConfigModule],
+            inject: [ConfigService],
+            useFactory: ( typeConfig: ConfigService ) => ({
+                ...typeConfig.getOrThrow('database')
             })
+        
         }),
         CotizacionesModule
     ],

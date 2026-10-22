@@ -1,5 +1,5 @@
 import { Type } from 'class-transformer'
-import { IsAlpha, IsDate, IsEmpty, IsInt, IsNotEmpty, IsPositive, IsString, MinDate } from 'class-validator'
+import { IsAlpha, IsDate, IsEmpty, IsInt, IsNotEmpty, IsOptional, IsPositive, IsString, MinDate } from 'class-validator'
 
 
 export class CreateCotizacioneDto {
@@ -36,9 +36,10 @@ export class CreateCotizacioneDto {
     @IsPositive()
     totalValue: number
 
+    @IsOptional()
     @IsInt()
-    @IsEmpty()
+    @IsNotEmpty()
     @IsPositive()
-    advisor: number
+    advisor?: number
 
 }
