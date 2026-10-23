@@ -6,8 +6,7 @@ export default () => ({
         username: 'admin',
         password: 'admin123',
         database: 'simulacroNestJs',
-        autoLoadEntities: true
-    },
-    envFilePath: './development/.env',
-    isGlobal: true
+        autoLoadEntities: true,
+        synchronize: true
+    }
 })

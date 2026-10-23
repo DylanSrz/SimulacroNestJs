@@ -1,7 +1,7 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
 import { CotizacionesService } from './cotizaciones.service.js';
-import { CreateCotizacioneDto } from './dto/create-cotizacione.dto.js';
-import { UpdateCotizacioneDto } from './dto/update-cotizacione.dto.js';
+import { CreateCotizacionesDto } from './dto/create-cotizacione.dto.js';
+import { UpdateCotizacionesDto } from './dto/update-cotizacione.dto.js';
 import { AuthGuard } from '../auth/guards/auth.guards.js';
 
 @Controller('cotizaciones')
@@ -10,7 +10,7 @@ export class CotizacionesController {
   constructor(private readonly cotizacionesService: CotizacionesService) {}
 
   @Post()
-  create(@Body() createCotizacioneDto: CreateCotizacioneDto) {
+  create(@Body() createCotizacioneDto: CreateCotizacionesDto) {
     return this.cotizacionesService.create(createCotizacioneDto);
   }
 
@@ -25,7 +25,7 @@ export class CotizacionesController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateCotizacioneDto: UpdateCotizacioneDto) {
+  update(@Param('id') id: string, @Body() updateCotizacioneDto: UpdateCotizacionesDto) {
     return this.cotizacionesService.update(+id, updateCotizacioneDto);
   }
 

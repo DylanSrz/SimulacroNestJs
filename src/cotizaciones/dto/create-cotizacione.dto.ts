@@ -1,8 +1,8 @@
 import { Type } from 'class-transformer'
-import { IsAlpha, IsDate, IsEmpty, IsInt, IsNotEmpty, IsOptional, IsPositive, IsString, MinDate } from 'class-validator'
+import { IsAlpha, IsDate, IsInt, IsNotEmpty, IsOptional, IsPositive, IsString, MinDate } from 'class-validator'
 
 
-export class CreateCotizacioneDto {
+export class CreateCotizacionesDto {
 
     @IsString()
     @IsNotEmpty()

@@ -1,7 +1,8 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 import { CotizacionesStatus } from "../enum/cotizaciones-status.enum.js";
-@Entity()
-export class Cotizacione {
+
+@Entity('cotizaciones')
+export class Cotizaciones {
     
     @PrimaryGeneratedColumn()
     id: number
@@ -34,7 +35,7 @@ export class Cotizacione {
     })
     status: CotizacionesStatus
 
-    @Column("varchar", { length: 200 })
+    @Column("varchar", { length: 200})
     rejectionReason: string
 
     @Column()
